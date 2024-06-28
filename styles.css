@@ -42,14 +42,18 @@
     width: 8rem;
     background-color: #fff;
     border: 1px solid black;
-    padding: 4rem 0;
+    height: 8rem;
+    padding: 1rem 0;
     border-radius: 1.25rem;
-    font-size: 3.1rem;
+    font-size: 4rem;
     text-align: center;
     color: white;
     cursor: pointer;
 }
 
+h1{
+    text-decoration: underline;
+}
 .turn{
     font-size: 1.5rem;
 }
@@ -70,6 +74,22 @@
     border-radius: 1.25rem;
 }
 
-.btn:target{
-    padding:-1.6rem 0;
+@media screen and (max-width: 450px) {
+    .game {
+        max-width: 20rem;
+    }
+    .btn {
+        width: 5rem;
+        height: 5rem;
+        padding: .4rem 0;
+        font-size: 3rem;
+    }
+    .container {
+        padding: 10rem 0;
+    }
+    .pop {
+        top: 40%;
+        width: 18rem;
+        font-size: 1rem;
+    }
 }

@@ -1,5 +1,4 @@
 let O = true;
-
 const button = document.querySelectorAll(".btn");
 const turn = document.querySelector(".turn");
 const pop = document.querySelector(".pop");
@@ -18,20 +17,19 @@ let win = [
 ];
 
 let i = 0;
-let gameOver = false; // Track if the game is over
+let gameOver = false;
 
 button.forEach(element => {
     element.addEventListener("click", () => {
-        if (element.textContent != "" || gameOver) { // Prevent moves after game is over
+        if (element.textContent != "" || gameOver) { 
             return;
         }
-        element.style.padding = "1.6rem 0";
         if (O) {
             element.textContent = "O";
             O = false;
             turn.textContent = "Computer turn";
             checkWin();
-            if (!gameOver) { // Only allow computer move if game is not over
+            if (!gameOver) { 
                 setTimeout(com, 500);
             }
         } else {
@@ -45,7 +43,7 @@ button.forEach(element => {
     });
 });
 
-async function checkWin() {
+function checkWin() {
     i++;
     for (let ele of win) {
         let p1 = button[ele[0]].textContent;
@@ -53,7 +51,7 @@ async function checkWin() {
         let p3 = button[ele[2]].textContent;
         if (p1 !== "" && p2 !== "" && p3 !== "") {
             if (p1 === p2 && p2 === p3) {
-                gameOver = true; // Set game over flag
+                gameOver = true; 
                 if (!O) {
                     turn.textContent = "Player Wins";
                     pop.textContent = "Player Wins";
@@ -61,21 +59,18 @@ async function checkWin() {
                     turn.textContent = "Computer Wins";
                     pop.textContent = "Computer Wins";
                 }
-                await delay(500);
-                pop.style.display = "block";
+                setTimeout(()=>
+                    pop.style.display = "block"
+                ,500);
                 setTimeout(restart, 1000);
-                return; // Exit the function to prevent further moves
+                return; 
             }
         }
     }
 }
 
-function delay(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 function checkdraw() {
-    if (i == 9 && !gameOver) { // Only check for draw if game is not over
+    if (i === 9 && !gameOver) { 
         turn.textContent = "Draw";
         pop.textContent = "Draw";
         pop.style.display = "block";
@@ -88,13 +83,12 @@ function restart() {
     button.forEach(ele => {
         i = 0;
         O = true;
-        gameOver = false; // Reset game over flag
+        gameOver = false; 
         pop.style.display = "none";
         turn.textContent = "Player turn";
         ele.textContent = "";
-        ele.style.padding = "4rem 0";
-        poss = [0, 1, 2, 3, 4, 5, 6, 7, 8];
     })
+    poss = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 }
 
 function removele(ele) {
@@ -105,7 +99,7 @@ function removele(ele) {
 }
 
 function com() {
-    if (poss.length == 0 || gameOver) return; // Prevent computer move if game is over
+    if (poss.length == 0 || gameOver) return;
     let ran = Math.floor(Math.random() * poss.length);
     console.log(ran);
     let mov = poss[ran];
