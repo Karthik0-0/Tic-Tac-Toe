@@ -10,7 +10,8 @@
 
 .container{
     width:100%;
-    padding: 6rem 0;
+    position: fixed;
+    padding: 4.3rem 0;
     background: radial-gradient(circle at 24.1% 68.8%, rgb(50, 50, 50) 0%, rgb(0, 0, 0) 99.4%);
     display: flex;
     align-items: center;
@@ -24,6 +25,7 @@
     padding: .5rem;
     text-align: center;
     border-radius: 1.25rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
 .game-in{
@@ -32,6 +34,7 @@
     gap: 1rem;
     justify-content: center;
     margin: 2rem 1rem;
+    position: relative;
 }
 
 .btn{
@@ -44,5 +47,29 @@
     font-size: 3.1rem;
     text-align: center;
     color: white;
+    cursor: pointer;
 }
 
+.turn{
+    font-size: 1.5rem;
+}
+
+.pop{
+    position: absolute;
+    width:25rem;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    border: .1rem solid black;
+    padding: 4rem;
+    font-size: 2rem;
+    top:35%;
+    left:50%;
+    transform:translateX(-50%);
+    z-index: 1;
+    background: linear-gradient(120deg,rgb(224, 218, 218),rgb(239, 217, 217),rgb(235, 209, 209));
+    display: none;
+    border-radius: 1.25rem;
+}
+
+.btn:target{
+    padding:-1.6rem 0;
+}
